@@ -6,11 +6,17 @@ from datetime import timedelta
 from http import HTTPStatus
 import logging
 
+from pathlib import Path
+import sys
+
+path_root = Path(__file__).parents[2]
+sys.path.append(str(path_root))
+
 from aiohttp.client_exceptions import ClientResponseError
-from aiolyric import Lyric
-from aiolyric.exceptions import LyricAuthenticationException, LyricException
-from aiolyric.objects.device import LyricDevice
-from aiolyric.objects.location import LyricLocation
+from .aiolyricsfd import Lyric
+from .aiolyricsfd.exceptions import LyricAuthenticationException, LyricException
+from .aiolyricsfd.objects.device import LyricDevice
+from .aiolyricsfd.objects.location import LyricLocation
 
 from homeassistant.config_entries import ConfigEntry
 from homeassistant.const import Platform

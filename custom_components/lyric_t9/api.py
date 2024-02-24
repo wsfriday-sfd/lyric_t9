@@ -1,8 +1,14 @@
 """API for Honeywell Lyric bound to Home Assistant OAuth."""
 from typing import cast
 
+from pathlib import Path
+import sys
+
+path_root = Path(__file__).parents[2]
+sys.path.append(str(path_root))
+
 from aiohttp import BasicAuth, ClientSession
-from aiolyric.client import LyricClient
+from .aiolyricsfd.client import LyricClient
 
 from homeassistant.components.application_credentials import AuthImplementation
 from homeassistant.helpers import config_entry_oauth2_flow

@@ -28,7 +28,7 @@ class Lyric(LyricBase):
         self._locations: List[LyricLocation] = []
         self._locations_dict: dict = {}
         self._rooms_dict: dict = {}
-        logging.critical("init!")
+        # logging.critical("init!")
 
     @property
     def client_id(self) -> str:

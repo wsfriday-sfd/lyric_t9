@@ -1,6 +1,12 @@
 """Constants for the Honeywell Lyric integration."""
+from pathlib import Path
+import sys
+
+path_root = Path(__file__).parents[2]
+sys.path.append(str(path_root))
+
 from aiohttp.client_exceptions import ClientResponseError
-from aiolyric.exceptions import LyricAuthenticationException, LyricException
+from .aiolyricsfd.exceptions import LyricAuthenticationException, LyricException
 
 DOMAIN = "lyric_t9"
 

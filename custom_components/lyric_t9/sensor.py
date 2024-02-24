@@ -6,9 +6,15 @@ from dataclasses import dataclass
 from datetime import datetime, timedelta
 import logging
 
-from aiolyric import Lyric
-from aiolyric.objects.device import LyricDevice
-from aiolyric.objects.location import LyricLocation
+from pathlib import Path
+import sys
+
+path_root = Path(__file__).parents[2]
+sys.path.append(str(path_root))
+
+from .aiolyricsfd import Lyric
+from .aiolyricsfd.objects.device import LyricDevice
+from .aiolyricsfd.objects.location import LyricLocation
 
 from homeassistant.components.sensor import (
     SensorDeviceClass,
