@@ -507,3 +507,20 @@ class LyricClimate(LyricDeviceEntity, ClimateEntity):
                 fan_mode,
             )
         await self.coordinator.async_refresh()
+
+    async def async_set_room_priority(self, priority_type: str, rooms: list) -> None:
+        """Set room priority."""
+        _LOGGER.debug("Set priority type: %s", priority_type)
+        try:
+            # _LOGGER.debug("Fan mode passed to lyric: %s", LYRIC_FAN_MODES[fan_mode])
+            await self._set_room_priority(
+                self.location, self.device, type=priority_type, rooms=rooms
+            )
+        except LYRIC_EXCEPTIONS as exception:
+            _LOGGER.error(exception)
+        except KeyError:
+            _LOGGER.error(
+                "The priority type requested does not have a corresponding type in lyric: %s",
+                priority_type,
+            )
+        await self.coordinator.async_refresh()

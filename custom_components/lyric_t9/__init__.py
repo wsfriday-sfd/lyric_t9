@@ -146,6 +146,7 @@ class LyricEntity(CoordinatorEntity[DataUpdateCoordinator[Lyric]]):
         self._mac_id = device.macID
         self._update_thermostat = coordinator.data.update_thermostat
         self._update_fan = coordinator.data.update_fan
+        self._set_room_priority = coordinator.data.set_room_priority
 
     @property
     def unique_id(self) -> str:
