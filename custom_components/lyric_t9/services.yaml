@@ -1,9 +1,9 @@
 set_hold_time:
   target:
     device:
-      integration: lyric
+      integration: lyric_t9
     entity:
-      integration: lyric
+      integration: lyric_t9
       domain: climate
   fields:
     time_period:
