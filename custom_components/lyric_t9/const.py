@@ -2,7 +2,7 @@
 from aiohttp.client_exceptions import ClientResponseError
 from aiolyric.exceptions import LyricAuthenticationException, LyricException
 
-DOMAIN = "lyric"
+DOMAIN = "lyric_t9"
 
 OAUTH2_AUTHORIZE = "https://api.honeywell.com/oauth2/authorize"
 OAUTH2_TOKEN = "https://api.honeywell.com/oauth2/token"

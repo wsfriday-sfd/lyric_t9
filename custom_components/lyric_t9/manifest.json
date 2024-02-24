@@ -1,7 +1,7 @@
 {
-  "domain": "lyric",
-  "name": "Honeywell Lyric",
-  "codeowners": ["@timmo001"],
+  "domain": "lyric_t9",
+  "name": "Honeywell Lyric T9",
+  "codeowners": ["@wsfriday-sfd"],
   "config_flow": true,
   "dependencies": ["application_credentials"],
   "dhcp": [
