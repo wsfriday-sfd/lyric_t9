@@ -247,6 +247,5 @@ class LyricRoom(LyricDeviceEntity, SensorEntity):
         """Return the current temperature."""
         return (
             self.coordinator.data.rooms_dict[self.device.macID][self.rid]
-            .accessories[0]
-            .temperature
+            .roomAvgTemp
         )
