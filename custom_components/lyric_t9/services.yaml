@@ -12,3 +12,24 @@ set_hold_time:
       required: true
       selector:
         text:
+set_room_priority:
+  target:
+    device:
+      integration: lyric_t9
+    entity:
+      integration: lyric_t9
+      domain: climate
+  fields:
+    priority_type:
+      default: "PickARoom"
+      example: "PickARoom"
+      required: true
+      selector:
+        text:
+    rooms:
+      default: "0"
+      example: "0"
+      required: true
+      selector:
+        text:
+        

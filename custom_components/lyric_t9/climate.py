@@ -116,6 +116,10 @@ HVAC_ACTIONS = {
 SERVICE_HOLD_TIME = "set_hold_time"
 ATTR_TIME_PERIOD = "time_period"
 
+SERVICE_ROOM_PRIORITY = "set_room_priority"
+ATTR_PRIORITY_TYPE = "priority_type"
+ATTR_ROOMS = "rooms"
+
 SCHEMA_HOLD_TIME = {
     vol.Required(ATTR_TIME_PERIOD, default="01:00:00"): vol.All(
         cv.time_period,
@@ -123,6 +127,8 @@ SCHEMA_HOLD_TIME = {
         lambda td: strftime("%H:%M:%S", localtime(time() + td.total_seconds())),
     )
 }
+
+SCHEMA_ROOM_PRIORITY = {}
 
 
 async def async_setup_entry(
@@ -155,6 +161,12 @@ async def async_setup_entry(
         SERVICE_HOLD_TIME,
         SCHEMA_HOLD_TIME,
         "async_set_hold_time",
+    )
+
+    platform.async_register_entity_service(
+        SERVICE_ROOM_PRIORITY,
+        SCHEMA_ROOM_PRIORITY,
+        "async_set_room_priority",
     )
 
 
@@ -518,9 +530,4 @@ class LyricClimate(LyricDeviceEntity, ClimateEntity):
             )
         except LYRIC_EXCEPTIONS as exception:
             _LOGGER.error(exception)
-        except KeyError:
-            _LOGGER.error(
-                "The priority type requested does not have a corresponding type in lyric: %s",
-                priority_type,
-            )
         await self.coordinator.async_refresh()
