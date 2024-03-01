@@ -522,12 +522,13 @@ class LyricClimate(LyricDeviceEntity, ClimateEntity):
 
     async def async_set_room_priority(self, priority_type: str, rooms: list) -> None:
         """Set room priority."""
-        _LOGGER.debug("Set priority type: %s", priority_type)
+        # _LOGGER.debug("Set priority type: %s - rooms: %r", priority_type, rooms)
+        _LOGGER.critical("Set priority type: %s - rooms: %r", priority_type, rooms)
         try:
-            # _LOGGER.debug("Fan mode passed to lyric: %s", LYRIC_FAN_MODES[fan_mode])
-            await self._set_room_priority(
-                self.location, self.device, type=priority_type, rooms=rooms
-            )
+            _LOGGER.critical("Done Setting priority type: %s - rooms: %r", priority_type, rooms)
+            # await self._set_room_priority(
+            #     self.location, self.device, type=priority_type, rooms=rooms
+            # )
         except LYRIC_EXCEPTIONS as exception:
             _LOGGER.error(exception)
         await self.coordinator.async_refresh()

@@ -27,9 +27,11 @@ set_room_priority:
       selector:
         text:
     rooms:
-      default: "0"
-      example: "0"
       required: true
       selector:
-        text:
+        entity:
+          multiple: true
+          filter:
+            integration: lyric_t9
+            device_class: sensor
         
