@@ -526,9 +526,11 @@ class LyricClimate(LyricDeviceEntity, ClimateEntity):
     async def async_set_room_priority(self, priority_type: str, rooms: list) -> None:
         """Set room priority."""
         # _LOGGER.debug("Set priority type: %s - rooms: %r", priority_type, rooms)
-        _LOGGER.critical("Set priority type: %s - rooms: %r", priority_type, rooms)
+        #_LOGGER.critical("Set priority type: %s - rooms: %r", priority_type, rooms)
+        for room in rooms:
+            _LOGGER.critical("Room: %s", room)
         try:
-            _LOGGER.critical("Done Setting priority type: %s - rooms: %r", priority_type, rooms)
+            _LOGGER.critical("Setting priority type: %s - rooms: %r", priority_type, rooms)
             # await self._set_room_priority(
             #     self.location, self.device, type=priority_type, rooms=rooms
             # )
