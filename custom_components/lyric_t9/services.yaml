@@ -25,13 +25,15 @@ set_room_priority:
       example: "PickARoom"
       required: true
       selector:
-        text:
+        select:
+          options:
+            - "PickARoom"
+            - "WholeHouse"
+            - "FollowMe"
     rooms:
       required: true
       selector:
-        entity:
-          multiple: true
-          filter:
+        target:
+          device:
             integration: lyric_t9
-            device_class: sensor
         
