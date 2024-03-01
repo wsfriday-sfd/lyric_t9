@@ -128,7 +128,10 @@ SCHEMA_HOLD_TIME = {
     )
 }
 
-SCHEMA_ROOM_PRIORITY = {}
+SCHEMA_ROOM_PRIORITY = {
+    vol.Required(ATTR_PRIORITY_TYPE, default="PickARoom"): cv.string,
+    vol.Required(ATTR_ROOMS, default=["0"]): cv.ensure_list
+}
 
 
 async def async_setup_entry(
