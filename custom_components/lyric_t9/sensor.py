@@ -146,7 +146,7 @@ ROOM_SENSORS = [
         name="average temperature",
         device_class=SensorDeviceClass.TEMPERATURE,
         state_class=SensorStateClass.MEASUREMENT,
-        value_fn=lambda room: round(room.roomAvgTemp, 1),
+        value_fn=lambda room: room.roomAvgTemp,
         suitable_fn=lambda room: room.roomAvgTemp is not None,
     ),
     LyricRoomSensorEntityDescription(
@@ -156,7 +156,7 @@ ROOM_SENSORS = [
         device_class=SensorDeviceClass.HUMIDITY,
         state_class=SensorStateClass.MEASUREMENT,
         native_unit_of_measurement=PERCENTAGE,
-        value_fn=lambda room: round(room.roomAvgHumidity, 1),
+        value_fn=lambda room: room.roomAvgHumidity,
         suitable_fn=lambda room: room.roomAvgHumidity is not None,
     ),
 ]
