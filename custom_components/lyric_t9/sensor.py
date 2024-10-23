@@ -237,22 +237,15 @@ class LyricSensor(LyricDeviceEntity, SensorEntity):
         )
         self.entity_description = description
         if description.device_class == SensorDeviceClass.TEMPERATURE:
-            self._attr_native_unit_of_measurement = _get_lyric_device_temperature_units(
-                device
-            )
+            if device.units == "Fahrenheit":
+                self._attr_native_unit_of_measurement = UnitOfTemperature.FAHRENHEIT
+            else:
+                self._attr_native_unit_of_measurement = UnitOfTemperature.CELSIUS
 
     @property
     def native_value(self) -> StateType | datetime:
         """Return the state."""
         return self.entity_description.value_fn(self.device)
-
-
-def _get_lyric_device_temperature_units(device: LyricDevice) -> UnitOfTemperature:
-    return (
-        UnitOfTemperature.FAHRENHEIT
-        if device.units == "Fahrenheit"
-        else UnitOfTemperature.CELSIUS
-    )
 
 
 class LyricRoomSensor(LyricRoomEntity, SensorEntity):
@@ -280,9 +273,10 @@ class LyricRoomSensor(LyricRoomEntity, SensorEntity):
         room_name = room.roomName or f"Room {room.id}"
         self._attr_name = f"{room_name} {description.name}"
         if description.device_class == SensorDeviceClass.TEMPERATURE:
-            self._attr_native_unit_of_measurement = _get_lyric_device_temperature_units(
-                device
-            )
+            if device.units == "Fahrenheit":
+                self._attr_native_unit_of_measurement = UnitOfTemperature.FAHRENHEIT
+            else:
+                self._attr_native_unit_of_measurement = UnitOfTemperature.CELSIUS
 
     @property
     def native_value(self) -> StateType:
